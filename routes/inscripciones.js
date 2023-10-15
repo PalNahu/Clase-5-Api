@@ -2,6 +2,140 @@ var express = require("express");
 var router = express.Router();
 var models = require("../models");
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Inscripcion:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: integer
+ *         inscripcion-materia:
+ *           type: object
+ *           properties:
+ *             id:
+ *               type: integer
+ *             nombre:
+ *               type: string
+ *         inscripcion-alumno:
+ *           type: object
+ *           properties:
+ *             id:
+ *               type: integer
+ *             nombre:
+ *               type: string
+ *             apellido:
+ *               type: string
+ */
+
+/**
+ * @swagger
+ * /inscripciones:
+ *   get:
+ *     summary: Obtiene todas las inscripciones
+ *     responses:
+ *       200:
+ *         description: Lista de inscripciones
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: "#/components/schemas/Inscripcion"
+ */
+
+/**
+ * @swagger
+ * /inscripciones:
+ *   post:
+ *     summary: Crea una nueva inscripción
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Inscripcion"
+ *     responses:
+ *       201:
+ *         description: Inscripción creada exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Inscripcion"
+ *       400:
+ *         description: Bad request
+ *       500:
+ *         description: Error en el servidor
+
+ * @swagger
+ * /inscripciones/{id}:
+ *   get:
+ *     summary: Obtiene una inscripción por su ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID de la inscripción
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Inscripción encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Inscripcion"
+ *       404:
+ *         description: Inscripción no encontrada
+ *       500:
+ *         description: Error en el servidor
+
+ *   put:
+ *     summary: Actualiza una inscripción por su ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID de la inscripción
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Inscripcion"
+ *     responses:
+ *       200:
+ *         description: Inscripción actualizada exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Inscripcion"
+ *       400:
+ *         description: Bad request
+ *       500:
+ *         description: Error en el servidor
+
+ *   delete:
+ *     summary: Elimina una inscripción por su ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID de la inscripción
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Inscripción eliminada exitosamente
+ *       404:
+ *         description: Inscripción no encontrada
+ *       500:
+ *         description: Error en el servidor
+ */
+
 router.get("/", async (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 10; // Cantidad de elementos por página (predeterminado: 10)
