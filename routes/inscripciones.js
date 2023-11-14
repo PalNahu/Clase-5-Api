@@ -39,10 +39,21 @@ var models = require("../models");
  *         description: Lista de inscripciones
  *         content:
  *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: "#/components/schemas/Inscripcion"
+ *             example:
+ *               inscripciones:
+ *                 - id: 1
+ *                   inscripcion-materia:
+ *                     id: 101
+ *                     nombre: "Matemáticas"
+ *                   inscripcion-alumno:
+ *                     id: 201
+ *                     nombre: "Juan"
+ *                     apellido: "Pérez"
+ *               pagination:
+ *                 page: 1
+ *                 limit: 10
+ *                 totalRecords: 1
+ *                 totalPages: 1
  */
 
 /**
@@ -56,6 +67,9 @@ var models = require("../models");
  *         application/json:
  *           schema:
  *             $ref: "#/components/schemas/Inscripcion"
+ *           example:
+ *             id_materia: 101
+ *             id_alumno: 201
  *     responses:
  *       201:
  *         description: Inscripción creada exitosamente
@@ -63,6 +77,8 @@ var models = require("../models");
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/Inscripcion"
+ *             example:
+ *               id: 2
  *       400:
  *         description: Bad request
  *       500:
@@ -86,6 +102,15 @@ var models = require("../models");
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/Inscripcion"
+ *             example:
+ *               id: 1
+ *               inscripcion-materia:
+ *                 id: 101
+ *                 nombre: "Matemáticas"
+ *               inscripcion-alumno:
+ *                 id: 201
+ *                 nombre: "Juan"
+ *                 apellido: "Pérez"
  *       404:
  *         description: Inscripción no encontrada
  *       500:
@@ -106,6 +131,9 @@ var models = require("../models");
  *         application/json:
  *           schema:
  *             $ref: "#/components/schemas/Inscripcion"
+ *           example:
+ *             id_materia: 101
+ *             id_alumno: 202
  *     responses:
  *       200:
  *         description: Inscripción actualizada exitosamente
@@ -113,6 +141,15 @@ var models = require("../models");
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/Inscripcion"
+ *             example:
+ *               id: 1
+ *               inscripcion-materia:
+ *                 id: 101
+ *                 nombre: "Matemáticas"
+ *               inscripcion-alumno:
+ *                 id: 202
+ *                 nombre: "Carlos"
+ *                 apellido: "González"
  *       400:
  *         description: Bad request
  *       500:
@@ -135,6 +172,7 @@ var models = require("../models");
  *       500:
  *         description: Error en el servidor
  */
+
 
 router.get("/", async (req, res) => {
   try {
