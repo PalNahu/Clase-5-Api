@@ -36,7 +36,7 @@ describe('Inscripciones API', () => {
 
   // Prueba GET /inscripciones/{id}
   it('Debería obtener una inscripción por su ID', (done) => {
-    const inscripcionId = 1; // Reemplaza con un ID válido
+    const inscripcionId = 2; // Reemplaza con un ID válido
     chai.request(app)
       .get(`/ins/${inscripcionId}`) // Cambia '../models/inscripciones' a '/inscripciones'
       .end((err, res) => {
@@ -48,7 +48,7 @@ describe('Inscripciones API', () => {
 
   // Prueba PUT /inscripciones/{id}
   it('Debería actualizar una inscripción por su ID', (done) => {
-    const inscripcionId = 1; // Reemplaza con un ID válido
+    const inscripcionId = 2; // Reemplaza con un ID válido
     const inscripcionActualizada = {
       id_materia: 2, // Nuevos datos para la inscripción
       id_alumno: 2,
@@ -65,7 +65,7 @@ describe('Inscripciones API', () => {
 
   // Prueba DELETE /inscripciones/{id}
   it('Debería eliminar una inscripción por su ID', (done) => {
-    const inscripcionId = 1; // Reemplaza con un ID válido
+    const inscripcionId = 10; // Reemplaza con un ID válido
     chai.request(app)
       .delete(`/ins/${inscripcionId}`) // Cambia '../models/inscripciones' a '/inscripciones'
       .end((err, res) => {
