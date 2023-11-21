@@ -6,15 +6,15 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   inscripciones.associate = function(models) {
     //asociacion a alumnos (pertenece a:)
-  	inscripciones.belongsTo(models.alumnos// modelo al que pertenece
+  	inscripciones.belongsTo(models.alumnos
     ,{
-      as : 'inscripcion-alumno',  // nombre de mi relacion
-      foreignKey: 'id_alumno'     // campo con el que voy a igualar
+      as : 'inscripcion-alumno',  
+      foreignKey: 'id_alumno'     
     }),
-    inscripciones.belongsTo(models.materia// modelo al que pertenece
+    inscripciones.belongsTo(models.materia
     ,{
-      as : 'inscripcion-materia',  // nombre de mi relacion
-      foreignKey: 'id_materia'     // campo con el que voy a igualar
+      as : 'inscripcion-materia',  
+      foreignKey: 'id_materia'     
     })
 
   	/////////////////////

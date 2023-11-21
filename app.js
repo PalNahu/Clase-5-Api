@@ -3,10 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 var carrerasRouter = require('./routes/carreras');
 var materiaRouter = require('./routes/materia');
 var alumnosRouter = require('./routes/alumnos');
 var inscripcionesRouter = require('./routes/inscripciones');
+var usuariosRouter = require('./routes/usuarios')
 var app = express();
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./settings/swagger-config"); 
@@ -57,6 +59,7 @@ app.use('/car', carrerasRouter);
 app.use('/mat', materiaRouter);
 app.use('/alu', alumnosRouter);
 app.use('/ins', inscripcionesRouter);
+app.use('/user', usuariosRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

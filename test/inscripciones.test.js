@@ -10,7 +10,7 @@ describe('Inscripciones API', () => {
   // Prueba GET /inscripciones
   it('Debería obtener todas las inscripciones', (done) => {
     chai.request(app)
-      .get('/ins') // Cambia '../models/inscripciones' a '/inscripciones'
+      .get('/ins') 
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
@@ -22,10 +22,10 @@ describe('Inscripciones API', () => {
   it('Debería crear una nueva inscripción', (done) => {
     const nuevaInscripcion = {
       id_materia: 1,
-      id_alumno: 1,
+      id_alumno: 2,
     };
     chai.request(app)
-      .post('/ins') // Cambia '../models/inscripciones' a '/inscripciones'
+      .post('/ins') 
       .send(nuevaInscripcion)
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -36,9 +36,9 @@ describe('Inscripciones API', () => {
 
   // Prueba GET /inscripciones/{id}
   it('Debería obtener una inscripción por su ID', (done) => {
-    const inscripcionId = 2; // Reemplaza con un ID válido
+    const inscripcionId = 2; 
     chai.request(app)
-      .get(`/ins/${inscripcionId}`) // Cambia '../models/inscripciones' a '/inscripciones'
+      .get(`/ins/${inscripcionId}`) 
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
@@ -48,13 +48,13 @@ describe('Inscripciones API', () => {
 
   // Prueba PUT /inscripciones/{id}
   it('Debería actualizar una inscripción por su ID', (done) => {
-    const inscripcionId = 2; // Reemplaza con un ID válido
+    const inscripcionId = 2; 
     const inscripcionActualizada = {
-      id_materia: 2, // Nuevos datos para la inscripción
+      id_materia: 2,
       id_alumno: 2,
     };
     chai.request(app)
-      .put(`/ins/${inscripcionId}`) // Cambia '../models/inscripciones' a '/inscripciones'
+      .put(`/ins/${inscripcionId}`) 
       .send(inscripcionActualizada)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -65,9 +65,9 @@ describe('Inscripciones API', () => {
 
   // Prueba DELETE /inscripciones/{id}
   it('Debería eliminar una inscripción por su ID', (done) => {
-    const inscripcionId = 10; // Reemplaza con un ID válido
+    const inscripcionId = 22; 
     chai.request(app)
-      .delete(`/ins/${inscripcionId}`) // Cambia '../models/inscripciones' a '/inscripciones'
+      .delete(`/ins/${inscripcionId}`) 
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();

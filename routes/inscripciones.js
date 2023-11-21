@@ -272,8 +272,7 @@ router.put("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  const onSuccess = inscripcion =>
-    inscripcion
+  const onSuccess = inscripcion => inscripcion
       .destroy()
       .then(() => res.sendStatus(200))
       .catch(() => res.sendStatus(500));
